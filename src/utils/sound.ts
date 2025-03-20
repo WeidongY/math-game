@@ -9,7 +9,7 @@ class SoundManager {
       correct: new Audio('./sounds/correct.wav'),
       wrong: new Audio('./sounds/wrong.wav'),
       click: new Audio('./sounds/click.wav'),
-      success: new Audio('./sounds/success.wav'),
+      success: new Audio('./sounds/success.mp3'),
     };
 
     // 设置音量
