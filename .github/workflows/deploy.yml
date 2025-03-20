@@ -49,6 +49,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Debug - List artifacts
+        run: |
+          echo "Run ID: ${{ github.run_id }}"
+          echo "Artifact ID: ${{ needs.build.outputs.artifact_id }}"
+          echo "Artifact URL: ${{ needs.build.outputs.artifact_url }}"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2 
