@@ -112,8 +112,22 @@ const Block = styled.div<{ step: number }>`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url(${props => props.step === 1 ? './images/blocks/block-step1.svg' : './images/blocks/block-step2.svg'});
+  background-image: url(${props => props.step === 1 ? '/images/blocks/block-step1.svg' : '/images/blocks/block-step2.svg'});
   transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::after {
+    content: attr(data-number);
+    position: absolute;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-shadow: 1px 1px 0 white;
+    font-family: 'Comic Sans MS', cursive;
+  }
 `;
 
 const StepContainer = styled.div`
@@ -527,7 +541,7 @@ const MathGame: React.FC = () => {
       </AnimatePresence>
 
       <AnimatePresence>
-        {showExplanation && !isReviewMode && (
+        {showExplanation && (
           <Explanation
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -541,12 +555,11 @@ const MathGame: React.FC = () => {
                       <Block
                         key={`num1-${i}`}
                         step={1}
+                        data-number={i + 1}
                         initial={{ scale: 0, rotate: -180, y: 100 }}
                         animate={{ scale: 1, rotate: 0, y: 0 }}
                         transition={{ delay: i * 0.1, type: "spring", stiffness: 200 }}
-                      >
-                        {i + 1}
-                      </Block>
+                      />
                     ))}
                   </BlockContainer>
                 </StepContainer>
@@ -558,12 +571,11 @@ const MathGame: React.FC = () => {
                       <Block
                         key={`num2-${i}`}
                         step={2}
+                        data-number={i + 1}
                         initial={{ scale: 0, rotate: -180, y: 100 }}
                         animate={{ scale: 1, rotate: 0, y: 0 }}
                         transition={{ delay: i * 0.1 + problem.num1 * 0.1, type: "spring", stiffness: 200 }}
-                      >
-                        {i + 1}
-                      </Block>
+                      />
                     ))}
                   </BlockContainer>
                 </StepContainer>
@@ -575,6 +587,7 @@ const MathGame: React.FC = () => {
                       <Block
                         key={`result-num1-${i}`}
                         step={1}
+                        data-number={i + 1}
                         initial={{ scale: 0, rotate: -180, y: 100 }}
                         animate={{ scale: 1, rotate: 0, y: 0 }}
                         transition={{ 
@@ -582,14 +595,13 @@ const MathGame: React.FC = () => {
                           type: "spring", 
                           stiffness: 200 
                         }}
-                      >
-                        {i + 1}
-                      </Block>
+                      />
                     ))}
                     {Array.from({ length: problem.num2 }).map((_, i) => (
                       <Block
                         key={`result-num2-${i}`}
                         step={2}
+                        data-number={problem.num1 + i + 1}
                         initial={{ scale: 0, rotate: -180, y: 100 }}
                         animate={{ scale: 1, rotate: 0, y: 0 }}
                         transition={{ 
@@ -597,9 +609,7 @@ const MathGame: React.FC = () => {
                           type: "spring", 
                           stiffness: 200 
                         }}
-                      >
-                        {problem.num1 + i + 1}
-                      </Block>
+                      />
                     ))}
                   </BlockContainer>
                   <ResultNumber>{problem.answer}</ResultNumber>
@@ -613,12 +623,11 @@ const MathGame: React.FC = () => {
                       <Block
                         key={`num1-${i}`}
                         step={1}
+                        data-number={i + 1}
                         initial={{ scale: 0, rotate: -180, y: 100 }}
                         animate={{ scale: 1, rotate: 0, y: 0 }}
                         transition={{ delay: i * 0.1, type: "spring", stiffness: 200 }}
-                      >
-                        {i + 1}
-                      </Block>
+                      />
                     ))}
                   </BlockContainer>
                 </StepContainer>
@@ -630,12 +639,11 @@ const MathGame: React.FC = () => {
                       <Block
                         key={`num2-${i}`}
                         step={2}
+                        data-number={i + 1}
                         initial={{ scale: 0, rotate: -180, y: 100 }}
                         animate={{ scale: 1, rotate: 0, y: 0 }}
                         transition={{ delay: i * 0.1 + problem.num1 * 0.1, type: "spring", stiffness: 200 }}
-                      >
-                        {i + 1}
-                      </Block>
+                      />
                     ))}
                   </BlockContainer>
                 </StepContainer>
@@ -647,6 +655,7 @@ const MathGame: React.FC = () => {
                       <Block
                         key={`num1-${i}`}
                         step={1}
+                        data-number={i + 1}
                         initial={{ scale: 0, rotate: -180, y: 100 }}
                         animate={{ 
                           scale: i < problem.answer ? 1 : 0.8,
@@ -662,9 +671,7 @@ const MathGame: React.FC = () => {
                           stiffness: 200,
                           duration: 0.5
                         }}
-                      >
-                        {i + 1}
-                      </Block>
+                      />
                     ))}
                   </BlockContainer>
                   <ResultNumber>{problem.answer}</ResultNumber>
