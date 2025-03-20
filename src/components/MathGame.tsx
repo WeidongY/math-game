@@ -106,18 +106,14 @@ const BlockContainer = styled.div`
   border-radius: 8px;
 `;
 
-const Block = styled(motion.div)<{ step: number }>`
-  width: 60px;
-  height: 60px;
-  background-image: url(${props => props.step === 1 ? '/images/blocks/block-step1.svg' : '/images/blocks/block-step2.svg'});
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+const Block = styled.div<{ step: number }>`
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(${props => props.step === 1 ? './images/blocks/block-step1.svg' : './images/blocks/block-step2.svg'});
+  transition: all 0.3s ease;
 `;
 
 const StepContainer = styled.div`
