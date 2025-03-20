@@ -112,7 +112,7 @@ const Block = styled.div<{ step: number }>`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url(${props => props.step === 1 ? '/images/blocks/block-step1.svg' : '/images/blocks/block-step2.svg'});
+  background-image: url(${props => props.step === 1 ? '/math-game/images/blocks/block-step1.svg' : '/math-game/images/blocks/block-step2.svg'});
   transition: all 0.3s ease;
   position: relative;
   display: flex;
@@ -573,7 +573,7 @@ const MathGame: React.FC = () => {
                 </StepContainer>
                 
                 <StepContainer>
-                  <StepIcon style={{ backgroundImage: 'url("/images/icons/plus.svg")' }} />
+                  <StepIcon style={{ backgroundImage: 'url("/math-game/images/icons/plus.svg")' }} />
                   <BlockContainer>
                     {Array.from({ length: problem.num2 }).map((_, i) => (
                       <Block
@@ -587,7 +587,7 @@ const MathGame: React.FC = () => {
                 </StepContainer>
                 
                 <ResultContainer>
-                  <StepIcon style={{ backgroundImage: 'url("/images/icons/equals.svg")' }} />
+                  <StepIcon style={{ backgroundImage: 'url("/math-game/images/icons/equals.svg")' }} />
                   <BlockContainer>
                     {Array.from({ length: problem.num1 }).map((_, i) => (
                       <Block
@@ -625,7 +625,7 @@ const MathGame: React.FC = () => {
                 </StepContainer>
                 
                 <StepContainer>
-                  <StepIcon style={{ backgroundImage: 'url("/images/icons/minus.svg")' }} />
+                  <StepIcon style={{ backgroundImage: 'url("/math-game/images/icons/minus.svg")' }} />
                   <BlockContainer>
                     {Array.from({ length: problem.num2 }).map((_, i) => (
                       <Block
@@ -639,7 +639,7 @@ const MathGame: React.FC = () => {
                 </StepContainer>
                 
                 <ResultContainer>
-                  <StepIcon style={{ backgroundImage: 'url("/images/icons/equals.svg")' }} />
+                  <StepIcon style={{ backgroundImage: 'url("/math-game/images/icons/equals.svg")' }} />
                   <BlockContainer>
                     {Array.from({ length: problem.num1 }).map((_, i) => (
                       <Block
